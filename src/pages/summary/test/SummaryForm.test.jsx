@@ -1,4 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
 import SummaryForm from '../SummaryForm'
 
 test('button is enabled on selecting check box', () => {
@@ -15,6 +17,10 @@ test('button is enabled on selecting check box', () => {
   expect(checkBox).not.toBeChecked()
 
   // click check checkbox
-  fireEvent.click(checkBox)
+  userEvent.click(checkBox)
   expect(confirmButton).toBeEnabled()
+
+  // click check checkbox
+  userEvent.click(checkBox)
+  expect(confirmButton).toBeDisabled()
 })
